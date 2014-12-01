@@ -50,6 +50,14 @@ namespace :scraper do
 
 	  # Save post
 	  @post.save
+
+	  # Loop over images and save to Image database
+	  posting["images"].each do |image|
+	  	@image = Image.new
+	  	@image.url = image["full"]
+	  	@image.post_id = @post.id
+	  	@image.save
+	  end
 	end
   end
 
